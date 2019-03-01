@@ -149,6 +149,10 @@ export default Mixin.create({
     // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
     // IntersectionObserver takes either a Document Element or null for `root`
     const { top = 0, left = 0, bottom = 0, right = 0 } = this.viewportTolerance;
+    top = isNaN(top)? 0 : top;
+    left = isNaN(left)? 0 : left;
+    bottom = isNaN(bottom)? 0 : bottom;
+    right = isNaN(right)? 0 : right;
     set(this, '_observerOptions', {
       root: scrollableArea,
       rootMargin: `${top}px ${right}px ${bottom}px ${left}px`,
